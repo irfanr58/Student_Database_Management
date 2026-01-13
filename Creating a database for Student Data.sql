@@ -1,4 +1,11 @@
---1create database LMT_University--2create schema enrol--Address
+--1
+create database LMT_University
+
+--2
+create schema enrol
+
+
+--Address
 CREATE TABLE [dbo].[Address] (
 AddressId    int primary key identity(1,1)  NOT NULL ,
 Street_Address    varchar(50)   NULL, 
@@ -7,10 +14,13 @@ State      varchar(30)      NULL,
 Postal_Code      varchar(30)  NULL,
 Country  varchar(30) NOT NULL,
 Inserted_On date          NOT NULL
-) --Insertinsert into [LMT_University].[dbo].[Address]  (StreetAddress,City,State,PostalCode,Country,InsertedOn) values 
-('5 Schurz Lane',' GrybÛw', NULL ,'33-330', 'Poland', '2020-09-30'),
+) 
+
+--Insert
+insert into [LMT_University].[dbo].[Address]  (StreetAddress,City,State,PostalCode,Country,InsertedOn) values 
+('5 Schurz Lane',' Gryb√≥w', NULL ,'33-330', 'Poland', '2020-09-30'),
 ('628 Waubesa Drive', 'Jinsheng', NULL, NULL, 'China', '2020-09-30'),
-('44135 Northfield Way', 'Nowy DwÛr Mazowiecki', NULL, '05-160', 'Poland', '2020-09-30'),
+('44135 Northfield Way', 'Nowy Dw√≥r Mazowiecki', NULL, '05-160', 'Poland', '2020-09-30'),
 ('335 Bellgrove Road', 'Gaoqiao', NULL, NULL ,'China' ,'2020-09-30'),
 ('28 Victoria Junction', 'Bukovec', NULL ,'739 84' ,'Czech Republic', '2020-09-30'),
 ('6 Stuart Road', 'Wushan' ,NULL ,NULL, 'China', '2020-09-30'),
@@ -27,15 +37,15 @@ Inserted_On date          NOT NULL
 ('33942 Eagle Crest Trail', 'Oliveiras', 'Porto', '4745-235', 'Portugal', '2020-09-30'),
 ('20791 Hermina Way', 'B?o L?c' ,NULL, NULL ,'Vietnam', '2020-09-30'),
 ('86 Lake View Way',' Marsa Alam', NULL, NULL, 'Egypt', '2020-09-30'),
-('19732 Burning Wood Parkway' ,'PiteÂ ','Norrbotten' ,'944 73' ,'Sweden', '2020-09-30'),
+('19732 Burning Wood Parkway' ,'Pite√• ','Norrbotten' ,'944 73' ,'Sweden', '2020-09-30'),
 ('9320 Oak Valley Road', 'Rathangani', NULL, 'A45', 'Ireland', '2020-09-30'),
 ('2638 Waubesa Circle', 'Honda', NULL, '732048', 'Colombia' ,'2020-09-30'),
 ('6999 Monument Center', 'Cortes', NULL, '6341' ,'Philippines' ,'2020-09-30'),
 ('1 Warbler Hill', 'Proletar' ,NULL ,NULL ,'Tajikistan' ,'2020-09-30'),
 ('1311 Crowley Street', 'Baghlan', NULL ,NULL, 'Afghanistan', '2020-09-30'),
-('19 Walton Way', '÷ldziyt' ,NULL ,NULL ,'Mongolia' ,'2020-09-30'),
-('1 Glacier Hill', 'Cergy-Pontoise', 'Œle-de-France', '95304', 'France', '2020-09-30'),
-('5094 Gateway Way', 'éivinice' ,NULL, NULL, 'Bosnia and Herzegovina', '2020-09-30'),
+('19 Walton Way', '√ñldziyt' ,NULL ,NULL ,'Mongolia' ,'2020-09-30'),
+('1 Glacier Hill', 'Cergy-Pontoise', '√éle-de-France', '95304', 'France', '2020-09-30'),
+('5094 Gateway Way', '≈Ωivinice' ,NULL, NULL, 'Bosnia and Herzegovina', '2020-09-30'),
 ('2 Roth Pass', 'Tuatuka', NULL, NULL, 'Indonesia', '2020-09-30'),
 ('89531 Northview Road', 'Ganyi', NULL, NULL, 'China', '2020-09-30');
 
@@ -198,7 +208,10 @@ values
 ('Angelique',' Iacivelli',' 1995-06-07',' 9518365081',' 48',' 5',' 7',' 2020-10-01'),
 ('Zack',' Hefforde',' 1999-07-25',' 5455693035',' 49',' 1',' 29',' 2020-10-01'),
 ('Gusella',' Pettiford',' 1999-08-23',' 2425172721',' 50',' 4',' 3',' 2020-10-01')
---9a.List all the Student information from the Student table.select * from [LMT_University].[dbo].Students
+
+
+--9a.List all the Student information from the Student table.
+select * from [LMT_University].[dbo].Students
 
 --9b.List all the Department information from the Department table.
 select * from [LMT_University].[dbo].Department
@@ -216,7 +229,8 @@ select concat(StudentFirstName,StudentLastName) as StudentFullName, StudentDOB,S
 from Student StudentRollNo in AddressID 7.
 select StudentId,StudentFirstName,StudentLastName,StudentDOB,StudentMobile,StudentRollNo from Students where AddressID=7;
 
---9g. List all the student information whose first name is start with 'B'select * from Students where StudentFirstName LIKE 'B%'
+--9g. List all the student information whose first name is start with 'B'
+select * from Students where StudentFirstName LIKE 'B%'
 
 --9h. List all the student information whose first name is start and end with 'A'
 select * from Students where StudentFirstName LIKE 'A%A'
@@ -224,30 +238,31 @@ select * from Students where StudentFirstName LIKE 'A%A'
 --9i Count the number of Student from Student table whose DepartmentID 6.
 select count(*) from Students where Department_ID = 6;
 
---9j List all the StudentFullName, StudentAge, StudentMobile from Student [StudentFullName= StudentFirstName + ë ë + StudentLastName] [StudentAge= Current date ñ DOB (in Years)]
+--9j List all the StudentFullName, StudentAge, StudentMobile from Student [StudentFullName= StudentFirstName + ‚Äò ‚Äò + StudentLastName] [StudentAge= Current date ‚Äì DOB (in Years)]
 select concat(StudentFirstName,StudentLastName) as StudentFullName, YEAR(GETDATE())-YEAR(StudentDOB) as Age, StudentMobile from Students
 
---9K List all the StudentFullName, StudentAge, StudentMobile whose Age>23 from Student [StudentFullName= StudentFirstName + ë ë + StudentLastName] [StudentAge= Current date ñ DOB (in Years)]select concat(StudentFirstName,StudentLastName) as StudentFullName, YEAR(GETDATE())-YEAR(StudentDOB) as Age, StudentMobile from Students 
+--9K List all the StudentFullName, StudentAge, StudentMobile whose Age>23 from Student [StudentFullName= StudentFirstName + ‚Äò ‚Äò + StudentLastName] [StudentAge= Current date ‚Äì DOB (in Years)]
+select concat(StudentFirstName,StudentLastName) as StudentFullName, YEAR(GETDATE())-YEAR(StudentDOB) as Age, StudentMobile from Students 
 WHERE (YEAR(GETDATE())-YEAR(StudentDOB))>23;
 
---9L List all the StudentFullName, StudentAge, StudentMobile whose Age is either 21 or 23 from Student [StudentFullName= StudentFirstName + ë ë + StudentLastName][StudentAge= Current date ñ DOB (in Years)]
+--9L List all the StudentFullName, StudentAge, StudentMobile whose Age is either 21 or 23 from Student [StudentFullName= StudentFirstName + ‚Äò ‚Äò + StudentLastName][StudentAge= Current date ‚Äì DOB (in Years)]
 select concat(StudentFirstName,StudentLastName) as StudentFullName, YEAR(GETDATE())-YEAR(StudentDOB) as Age, StudentMobile from Students 
 WHERE (YEAR(GETDATE())-YEAR(StudentDOB))=21 OR  (YEAR(GETDATE())-YEAR(StudentDOB))=23
 
 --9M List all the LecturerID, LecturerName, LecturerHighestQualification, LecturerAge from Lecturer
 select LecturerID,Lecturer_Name,Lecturer_Highest_Qualification,Lecturer_Age from Lecturer
 
---9N List all the LecturerID, LecturerName, LecturerHighestQualification, LecturerAge from Lecturer whose HighestQualification is either ìMSî or ìPhDî
+--9N List all the LecturerID, LecturerName, LecturerHighestQualification, LecturerAge from Lecturer whose HighestQualification is either ‚ÄúMS‚Äù or ‚ÄúPhD‚Äù
 select LecturerID,Lecturer_Name,Lecturer_Highest_Qualification,Lecturer_Age from Lecturer 
 where Lecturer_Highest_Qualification = 'MS' OR Lecturer_Highest_Qualification = 'PhD'
 
 --9O List all the lecturer information who belongs to DepartmentID 2
 select * from Lecturer where Department_ID=2
 
---9P List all the lecturer information whose name end with ìRî.
+--9P List all the lecturer information whose name end with ‚ÄúR‚Äù.
 select * from Lecturer where Lecturer_Name LIKE '%r'
 
---9Q List all the lecturer information whose name either start or end with ìEî
+--9Q List all the lecturer information whose name either start or end with ‚ÄúE‚Äù
 select * from Lecturer where Lecturer_Name LIKE 'e%e'
 
 --9R List all the lecturer name is in capital letter
@@ -256,13 +271,13 @@ select UPPER(Lecturer_Name)from Lecturer
 --9S Display 5 character from the lecturer name along with LecturerID and LecturerHighestQualification.
 select LEFT(Lecturer_Name,5),LecturerID,Lecturer_Highest_Qualification from Lecturer
 
---9T List LecturerID, LecturerName, LecturerHighestQualification, LecturerAge(in year) [LecturerAge= Current Date ñ LecturerAge)] (in year).
+--9T List LecturerID, LecturerName, LecturerHighestQualification, LecturerAge(in year) [LecturerAge= Current Date ‚Äì LecturerAge)] (in year).
 select LecturerID,Lecturer_Name,Lecturer_Highest_Qualification,(YEAR(GETDATE())-YEAR(Lecturer_Age)) AS LecturerAge from Lecturer
 
 --9U List DepartmentID, DepartmentName, DepartmentDescription, DepartmentCapacity from Department.
 select Department_ID,Department_Name,Department_Description,Department_Capacity from Department
 
---9V List all the Department information whoís DepartmentName is ìECEî.
+--9V List all the Department information who‚Äôs DepartmentName is ‚ÄúECE‚Äù.
 select * from Department where Department_Name='ECE'
 
 --9W List all DepartmentName, DepartmentDescription, DepartmentCapacity from Department whose capacity is greater than 60.
@@ -271,7 +286,7 @@ select Department_Name,Department_Capacity,Department_Description from Departmen
 --9X List all AddressID, StreetAddress, City, State, PostalCode, Country from Address.
 Select AddressID,Street_Address,City,State,Postal_Code,Country from Address
 
---9Y List all AddressID, StreetAddress, City, State, PostalCode, Country from Address who belongs to ìPolandî country.
+--9Y List all AddressID, StreetAddress, City, State, PostalCode, Country from Address who belongs to ‚ÄúPoland‚Äù country.
 Select AddressID,Street_Address,City,State,Postal_Code,Country from Address where Country='Poland'
 
 --9Z List all the Address information whose state is null.
@@ -303,7 +318,7 @@ FROM Address;
 SELECT DISTINCT State 
 FROM Address;
 
---10f List all the LecturerID, LecturerName, LecturerHighestQualification, LecturerYearService from Lecturer [LecturerYearService= Current Date ñ LecturerAge] (in year).
+--10f List all the LecturerID, LecturerName, LecturerHighestQualification, LecturerYearService from Lecturer [LecturerYearService= Current Date ‚Äì LecturerAge] (in year).
 select LecturerID,Lecturer_Name,Lecturer_Highest_Qualification,YEAR(GETDATE())-YEAR(Lecturer_Age) as LecturerYearService from Lecturer
 
 --10g List all the LecturerID, LecturerName, LecturerHighestQualification, LecturerType from Lecturer [LecturerType= if LecturerYearService< 5 then "Begining Level Experience" elseif LecturerYearService>=5 and LecturerYearService<10 then "Mid Level experience" else "Experienced".
@@ -445,7 +460,7 @@ Left join [dbo].[Department] D on S.Department_ID=D.Department_ID
 Left join [dbo].[Lecturer] L on D.Department_ID=L.Department_ID
 
 
---11(g) Display all Student with Address, Department and Lecturer Information who belongs to either ìMEî or ìECEî department.
+--11(g) Display all Student with Address, Department and Lecturer Information who belongs to either ‚ÄúME‚Äù or ‚ÄúECE‚Äù department.
 
 Select 
 	S.[StudentID], 
@@ -475,7 +490,7 @@ Left join [dbo].[Lecturer] L on D.Department_ID=L.Department_ID
 
 WHERE D.[Department_Name] = 'ME' --OR D.[Department_Name] = 'ECE'
 
---11(h)	Display Student with Department and their Lecturer information based on the LecturerHighestQualification either ìMSî or ìPhDî.
+--11(h)	Display Student with Department and their Lecturer information based on the LecturerHighestQualification either ‚ÄúMS‚Äù or ‚ÄúPhD‚Äù.
 
 Select 
 	S.[StudentID], 
@@ -500,7 +515,7 @@ WHERE L.[Lecturer_Highest_Qualification] = 'MS' OR L.[Lecturer_Highest_Qualifica
 Order By S.[StudentID]
 
 
---11(i) Display Student with Department and Address Information, where student belongs to ìThailandî country.
+--11(i) Display Student with Department and Address Information, where student belongs to ‚ÄúThailand‚Äù country.
 
 Select 
 	S.[StudentID], 
@@ -582,35 +597,35 @@ Select * into LecturerCopy from Lecturer;
 
 Delete from LecturerCopy;
 
---13b.	Delete all the student information for the students who belong to ìITî department
+--13b.	Delete all the student information for the students who belong to ‚ÄúIT‚Äù department
 
 Delete StudCopy
 From [dbo].[StudCopy] S
 left join [dbo].[DepartmentCopy] D on S.Department_ID=D.Department_ID
 where D.[Department_Name] = 'IT'
 
---13c.	Delete all the student information for the students who belong to ìIndonesiaî country.
+--13c.	Delete all the student information for the students who belong to ‚ÄúIndonesia‚Äù country.
 
 Delete StudCopy
 From [dbo].[StudCopy] S
 left join [dbo].[AddressCopy] A on S.AddressID=A.AddressID
 where A.[Country] = 'Indonesia'
 
---13d.	Delete all the student information for the student who belongs to ìNanshiî city.
+--13d.	Delete all the student information for the student who belongs to ‚ÄúNanshi‚Äù city.
 
 Delete StudCopy
 From [dbo].[StudCopy] S
 left join [dbo].[AddressCopy] A on S.AddressID=A.AddressID
 where A.[City] = 'Nanshi'
 
---13e.	Delete all the student information for the student who belongs to ìBretagneî state.
+--13e.	Delete all the student information for the student who belongs to ‚ÄúBretagne‚Äù state.
 
 Delete StudCopy
 From [dbo].[StudCopy] S
 left join [dbo].[AddressCopy] A on S.AddressID=A.AddressID
 where A.[State] = 'Bretagne'
 
---14a. Update StudentMobile for those students who belongs to Department ìMEî
+--14a. Update StudentMobile for those students who belongs to Department ‚ÄúME‚Äù
 Update [dbo].[StudCopy]
 Set 
 	[StudCopy].[StudentMobile] = ABS(CHECKSUM(newid()))
@@ -623,17 +638,17 @@ UPDATE Students
 SET Department_ID = 3
 WHERE StudentId = 42;
 
---14c. Update LecturerHighestQualification as ìPHdî for the Lecturer whose LecturerHighestQualification= ìPhDî.
+--14c. Update LecturerHighestQualification as ‚ÄúPHd‚Äù for the Lecturer whose LecturerHighestQualification= ‚ÄúPhD‚Äù.
 UPDATE Lecturer
 SET Lecturer_Highest_Qualification ='Phd'
 WHERE Lecturer_Highest_Qualification='PhD';
 
---14d. Update PostalCode as ì00000î for the Address which contain NULL as a PostalCode
+--14d. Update PostalCode as ‚Äú00000‚Äù for the Address which contain NULL as a PostalCode
 UPDATE Address
 SET Postal_Code = '00000'
 WHERE Postal_Code IS NULL;
 
---14e Update StudentLastName as ìPaulî for the Student whose Name is ìJerryî
+--14e Update StudentLastName as ‚ÄúPaul‚Äù for the Student whose Name is ‚ÄúJerry‚Äù
 UPDATE Students
 SET StudentLastName = ' Paul'
 WHERE StudentFirstName = 'Jerry';
